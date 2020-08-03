@@ -10,6 +10,9 @@ def index(request):
   context = {'latest_question_list': latest_question_list,}  
   return render(request, 'polls/index.html', context)
 
+def developer(request, name):
+  return HttpResponse("Hello, my name is %s!. Nice to meet you" % name)
+
 def detail(request, question_id):
   question = get_object_or_404(Question, pk=question_id)
   return render(request, 'polls/detail.html', {'question':question})
