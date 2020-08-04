@@ -1,8 +1,8 @@
-<h1>This is a Todo page.</h1>
+<h1>Todo List!</h1>
 
 <ul>
     {% for todo_item in all_items %}
-        <li>{{ todo_item.content }}
+        <li>Item {{ forloop.counter }}: {{ todo_item.content }}<br>Time Created: {{ todo_item.date_created }}
             <form action="deleteTodo/{{todo_item.id}}" method="POST" style = 'display:inline;'>
                 {% csrf_token %}
                 <input type="submit" value="Delete">

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import TodoItem
+from django.utils import timezone
 # Create your views here.
 
 def todo(request):
@@ -9,7 +10,7 @@ def todo(request):
 	
 def addTodo(request):
   #create a new todo all_items, save and redirect the browser
-  new_item = TodoItem(content = request.POST['content'])
+  new_item = TodoItem(content = request.POST['content'], date_created = timezone.now())
   new_item.save()
   return HttpResponseRedirect('/todo')
 
