@@ -2,7 +2,8 @@
 
 <ul>
     {% for todo_item in all_items %}
-        <li>Item {{ forloop.counter }}: {{ todo_item.content }}<br>Time Created: {{ todo_item.date_created }}
+        <li>Item {{ forloop.counter }}: <a href="./{{todo_item.id}}">{{ todo_item.content }}</a><br>
+            Time: {{ todo_item.date }}
             <form action="deleteTodo/{{todo_item.id}}" method="POST" style = 'display:inline;'>
                 {% csrf_token %}
                 <input type="submit" value="Delete">
@@ -13,6 +14,9 @@
 
 <form action="addTodo" method="POST">
     {% csrf_token %}
-    <input type="text" name="content">
+    <label for="content">Things to do: </label>
+    <input type="text" name="content" id ="content"><br><br>
+    <label for = "date">Time :</label>
+    <input type="datetime" name="date" id ="date"><br><br>
     <input type="submit" value="Add">
 </form>

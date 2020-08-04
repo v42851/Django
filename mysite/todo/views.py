@@ -10,7 +10,7 @@ def todo(request):
 	
 def addTodo(request):
   #create a new todo all_items, save and redirect the browser
-  new_item = TodoItem(content = request.POST['content'], date_created = timezone.now())
+  new_item = TodoItem(content = request.POST['content'], date = request.POST['date'], date_created = timezone.now())
   new_item.save()
   return HttpResponseRedirect('/todo')
 
@@ -20,3 +20,6 @@ def deleteTodo(request, todo_id):
   delete_item.delete()
   return HttpResponseRedirect('/todo')
 
+def TodoContent(request, todo_id):
+  todo_item = TodoItem.objects.get(id=todo_id)
+  return render(request, 'todo/content.html', {'items':todo_item})
