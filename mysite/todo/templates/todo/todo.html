@@ -1,10 +1,10 @@
 <h1>Todo List!</h1>
 
 <ul>
-    {% for todo_item in all_items %}
-        <li>Item {{ forloop.counter }}: <a href="./{{todo_item.id}}">{{ todo_item.content }}</a><br>
+    {% for todo_item in todo %}
+        <li>Item {{ forloop.counter }}: <a href="{% url 'todo:content' todo_item.id %}">{{ todo_item.content }}</a><br>
             Time: {{ todo_item.date }}
-            <form action="deleteTodo/{{todo_item.id}}" method="POST" style = 'display:inline;'>
+            <form action="{% url 'todo:deletetodo' todo_item.id %}" method="POST" style = 'display:inline;'>
                 {% csrf_token %}
                 <input type="submit" value="Delete">
             </form>

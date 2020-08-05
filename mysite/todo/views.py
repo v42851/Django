@@ -1,12 +1,15 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import TodoItem
+from .models import TodoItem, UrgentItem
 from django.utils import timezone
-# Create your views here.
+from django.views import generic
+
 
 def todo(request):
   all_todo_items = TodoItem.objects.all()
-  return render(request, 'todo/todo.html', {'all_items':all_todo_items})
+  all_urgent_items = UrgentItem.objects.all()
+  context = {'todo': all_todo_items, 'urgent': all_urgent_items}
+  return render(request, 'todo/todo.html', context)
 	
 def addTodo(request):
   #create a new todo all_items, save and redirect the browser
@@ -20,6 +23,6 @@ def deleteTodo(request, todo_id):
   delete_item.delete()
   return HttpResponseRedirect('/todo')
 
-def TodoContent(request, todo_id):
-  todo_item = TodoItem.objects.get(id=todo_id)
-  return render(request, 'todo/content.html', {'items':todo_item})
+class TodoContentView(generic.DetailView):
+  model = TodoItem
+  template_name = 'todo/content.html'

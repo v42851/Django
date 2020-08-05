@@ -5,4 +5,7 @@ class TodoItem(models.Model):
     date = models.DateTimeField()
     date_created = models.DateTimeField()
 
-
+class UrgentItem(models.Model):
+    content = models.TextField()
+    date = models.DateField()
+    
