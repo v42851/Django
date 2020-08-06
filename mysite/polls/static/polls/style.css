@@ -1,3 +1,21 @@
-li a {
-    color: green;
+a {
+    color: #2760a1;
+    text-decoration: none;
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: inline-block;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+body {
+    background: white url("images/background.jpeg") no-repeat;
+    background-size: 100%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #2760a1;
+}
+
+h1 {
+    text-align: center;
+    margin: 1em;
 }

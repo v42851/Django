@@ -1,3 +1,8 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}">
+
 <h1>{{ todoitem.content }}</h1>
-<p>You have created {{ todoitem.content }} on {{ todoitem.date_created }}</p>
-<p>Please start to do at {{ todoitem.date }}</p>
+<p>Date Created: {{ todoitem.date_created }}</p>
+<p>Content are as follow:</p>
+<p>{{ todoitem.detail }}</p>
